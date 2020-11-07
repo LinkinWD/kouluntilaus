@@ -21,13 +21,14 @@
                 <br>
             </div>
            <div class="formi">
-               <form action="">
+               <form action="POST">
                    <label for="Nimi">Tilaajan nimi</label><br>
-                   <input type="text" placeholder="Nimesi"><br>
+                   <input type="text" placeholder="Nimesi" required ><br>
                    <label for="email">Tilaajan sähköposti</label><br>
-                   <input type="email" placeholder="Sähköpostisi"><br>
+                   <input type="email" placeholder="Sähköpostisi" required><br>
                    <label for="tilaus">Mitä saisi olla?</label><br>
                    <select name="tilaus" id="tilaus">    
+                       <option value="EiMitään">En tilaa mitään</option>
                        <option value="makaroonilaatikko">Makaroonilaatikkko</option>
                    </select><br>
                    <label for="määrä">Montako annosta haluisit?</label><br>
@@ -37,7 +38,21 @@
                <h4>Mitä olet tilaamassa:</h4>
            </div>
         </div>
-    
+        <h1>Admin alue</h1>
+        <div class="admin">
+            <form action="">
+                <label for="Lisää">Minkä ruuan haluat lisätä myyntiin?</label><br>
+                <input type="text" required><br>
+                <label for="määrä">Montako annosta sitä on myytäväksi?</label><br>
+                <input type="number" required><br>
+                <label for="annoskoko">Annoskoko?</label><br>
+                <input type="text" required><br>
+                <label for="hinta">Minkä hintainen on yksi annos?</label><br>
+                <input type="number" required><br><br>
+                <input type="submit" value="Lisää">
+            </form>
+        </div>
+        
     <script src="scripts/main.js"></script>
 </body>
 </html>
