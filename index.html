@@ -4,9 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ruokala</title>
+    <script src="https://kit.fontawesome.com/3728b5825f.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    
+        
+        <div class="section">
+            <h1>Ruokala</h1>
+            <div class="ruuat">
+                <h2>Tarjolla olevat ruuat:</h2><br>
+                <p>Makaroonilaatikko</p>
+                <p>Annoskoko: 1 litra</p>
+                <p>Jäljellä: 3 annosta</p>
+                <p>hinta: 3€</p>
+                <br>
+            </div>
+           <div class="formi">
+               <form action="">
+                   <label for="Nimi">Tilaajan nimi</label><br>
+                   <input type="text" placeholder="Nimesi"><br>
+                   <label for="email">Tilaajan sähköposti</label><br>
+                   <input type="email" placeholder="Sähköpostisi"><br>
+                   <label for="tilaus">Mitä saisi olla?</label><br>
+                   <select name="tilaus" id="tilaus">    
+                       <option value="makaroonilaatikko">Makaroonilaatikkko</option>
+                   </select><br>
+                   <label for="määrä">Montako annosta haluisit?</label><br>
+                   <input type="number" placeholder="0"><br>
+                   <input type="submit" value="Lähetä">
+               </form>
+               <h4>Mitä olet tilaamassa:</h4>
+           </div>
+        </div>
     
     <script src="scripts/main.js"></script>
 </body>
