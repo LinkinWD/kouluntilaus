@@ -14,10 +14,12 @@
             <h1>Ruokala</h1>
             <div class="ruuat">
                 <h2>Tarjolla olevat ruuat:</h2><br>
-                <p>Makaroonilaatikko</p>
-                <p>Annoskoko: 1 litra</p>
-                <p>Jäljellä: 3 annosta</p>
-                <p>hinta: 3€</p>
+                <div class="ruoka0">
+                <p class="ruuanNimi">Makaroonilaatikko</p>
+                <p class="annosKoko">Annoskoko: 1 litra</p>
+                <p class="annoksia" value="3">Jäljellä: 3 annosta</p>
+                <p class="hinta"> hinta: 3€</p>
+            </div>
                 <br>
             </div>
            <div class="formi">
@@ -29,11 +31,11 @@
                    <label for="tilaus">Mitä saisi olla?</label><br>
                    <select name="tilaus" id="tilaus">    
                        <option value="EiMitään">En tilaa mitään</option>
-                       <option value="makaroonilaatikko">Makaroonilaatikkko</option>
+                      
                    </select><br>
                    <label for="määrä">Montako annosta haluisit?</label><br>
                    <input type="number" placeholder="0"><br>
-                   <input type="submit" value="Lähetä">
+                   <input type="submit" value="Lähetä" id="tilausSubmit">
                </form>
                <h4>Mitä olet tilaamassa:</h4>
            </div>
@@ -42,14 +44,14 @@
         <div class="admin">
             <form action="">
                 <label for="Lisää">Minkä ruuan haluat lisätä myyntiin?</label><br>
-                <input type="text" required><br>
+                <input type="text" id="lisää" required><br>
                 <label for="määrä">Montako annosta sitä on myytäväksi?</label><br>
-                <input type="number" required><br>
+                <input type="number" id="määrä" required><br>
                 <label for="annoskoko">Annoskoko?</label><br>
-                <input type="text" required><br>
+                <input type="text" id="annosKoko" required><br>
                 <label for="hinta">Minkä hintainen on yksi annos?</label><br>
-                <input type="number" required><br><br>
-                <input type="submit" value="Lisää">
+                <input type="number" id="hinta" required><br><br>
+                <input type="submit" value="Lisää" id="adminSubmit">
             </form>
         </div>
         

@@ -1,4 +1,16 @@
+const ruokaValikko = document.querySelector('#tilaus')
+const ruuanNimi = document.querySelector('.ruuanNimi')
+const lisää = document.querySelector('#lisää')
+const määrä = document.querySelector('#määrä')
+const annosKoko = document.querySelector('#annosKoko')
+const hinta = document.querySelector('#hinta')
+const adminSubmit = document.querySelector('#adminSubmit')
+const ruokaLista = document.querySelector('.ruuat')
+const tilausSubmit = document.querySelector('#tilausSubmit')
+
+
 function vaihdaTausta(){
+
 
 const images = [
     'url("/images/pic1.jpg")',
@@ -29,3 +41,30 @@ const images = [
 }
 
 setInterval(vaihdaTausta, 4000)
+
+adminSubmit.addEventListener('click', (event)=> {
+    const uusiDiv = document.createElement('div')
+    uusiDiv.id = `${lisää}`
+    uusiDiv.innerHTML = `
+    <p>${lisää.value}</p>
+    <p>annoskoko: ${annosKoko.value}</p>
+    <p value="${määrä.value}">Jäljellä: ${määrä.value} annosta</p>
+    <p>Hinta:€ ${hinta.value}</p>
+    <br>
+    `;
+   
+    console.log(uusiDiv)
+    
+    ruokaLista.appendChild(uusiDiv)
+    event.preventDefault()
+   lisääListalle()
+} )
+
+
+function lisääListalle() {
+    const uusiVaihtoehto = document.createElement('option')
+    uusiVaihtoehto.value = `${määrä.value}`
+    uusiVaihtoehto.innerHTML = `${lisää.value}`
+    ruokaValikko.appendChild(uusiVaihtoehto)
+    
+}
