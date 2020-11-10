@@ -7,10 +7,18 @@ const hinta = document.querySelector('#hinta')
 const adminSubmit = document.querySelector('#adminSubmit')
 const ruokaLista = document.querySelector('.ruuat')
 const tilausSubmit = document.querySelector('#tilausSubmit')
+const tilausMäärä = document.querySelector('#tilausMäärä')
+
+let lista = [
+    {nimi: 'Makaroonilaatikko',
+    annoskoko: '1 Litra',
+    jäljellä: 12,
+    hinta: 2}
+]
+
 
 
 function vaihdaTausta(){
-
 
 const images = [
     'url("/images/pic1.jpg")',
@@ -43,28 +51,57 @@ const images = [
 setInterval(vaihdaTausta, 4000)
 
 adminSubmit.addEventListener('click', (event)=> {
-    const uusiDiv = document.createElement('div')
-    uusiDiv.id = `${lisää}`
-    uusiDiv.innerHTML = `
-    <p>${lisää.value}</p>
-    <p>annoskoko: ${annosKoko.value}</p>
-    <p value="${määrä.value}">Jäljellä: ${määrä.value} annosta</p>
-    <p>Hinta:€ ${hinta.value}</p>
-    <br>
-    `;
    
-    console.log(uusiDiv)
     
-    ruokaLista.appendChild(uusiDiv)
+    lista.push({nimi: lisää.value, annoskoko: annosKoko.value, jäljellä: määrä.value, hinta: hinta.value })
+   
     event.preventDefault()
+    
    lisääListalle()
+  
 } )
 
 
 function lisääListalle() {
+    for(let i = 0; i < lista.length; i++) {
     const uusiVaihtoehto = document.createElement('option')
-    uusiVaihtoehto.value = `${määrä.value}`
-    uusiVaihtoehto.innerHTML = `${lisää.value}`
+    let teksti =  document.createTextNode(lista[i].nimi)
+    uusiVaihtoehto.appendChild(teksti)
     ruokaValikko.appendChild(uusiVaihtoehto)
-    
+    console.log(lista)
+}}
+
+tilausSubmit.addEventListener('click', () => {
+    let arvo = tilausMäärä.value;
+})
+
+function myyntiLista() {
+    for(let annos of lista) {
+        const uusiDiv = document.createElement('div')
+        uusiDiv.id = `${lisää}`
+        uusiDiv.innerHTML = `
+        <p>${annos.nimi}</p>
+        <p>annoskoko: ${annos.annoskoko}</p>
+        <p >Jäljellä: ${annos.jäljellä} annosta</p>
+        <p>Hinta:€ ${annos.hinta}</p>
+        <br>
+        `;
+        ruokaLista.appendChild(uusiDiv)
+        
+    }
 }
+
+ruokaValikko.addEventListener('click', (e) => {
+    console.log(ruokaValikko.value)
+    let löydä = lista.find( ({ nimi }) => nimi === ruokaValikko.value );
+    let montako = löydä.jäljellä
+    for(let i = 0; i < montako; i++) {
+        const uusiVaihtoehto = document.createElement('option')
+        uusiVaihtoehto.value = i + 1
+        let teksti = document.createTextNode(i +1)
+        uusiVaihtoehto.appendChild(teksti)
+        tilausMäärä.appendChild(uusiVaihtoehto)
+    }
+} )
+myyntiLista()
+lisääListalle()
