@@ -35,6 +35,14 @@
   border-radius: 10px;
 }
 
+.section #selitys {
+  padding: 5px;
+  font-size: 1rem;
+  background: white;
+  opacity: .75;
+  border-radius: 10px;
+}
+
 .ruuat {
   padding: 2rem;
   line-height: 1.7;
@@ -66,7 +74,31 @@
   font-size: 1.4rem;
 }
 
+.formi h5 {
+  font-size: 1.3em;
+}
+
+.formi #tilausSubmit {
+  border-radius: 5px;
+  background-color: darkgrey;
+  padding: 5px 20px;
+}
+
 .admin {
   margin: 20px;
+}
+
+.admin label {
+  font-size: 2rem;
+}
+
+.admin input {
+  font-size: 2rem;
+}
+
+.admin #adminSubmit {
+  border-radius: 5px;
+  background-color: darkgrey;
+  padding: 5px 20px;
 }
 /*# sourceMappingURL=style.css.map */

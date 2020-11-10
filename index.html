@@ -12,22 +12,17 @@
         
         <div class="section">
             <h1>Ruokala</h1>
+            <p id="selitys">Pieni prototyyppi ekasta 'tilauksesta'. Piti esitellä millainen tämmöinen ohjelma voisi olla ja oliskohan sille käyttöä, jos on niin sitten pitää tehdä backennd myöhemmin ja kaunistella vähän koodia. Admin alue on ihan lisätty samalle sivulle, että voi kokeilla vähän kaikkia mahdollisia toimintoja. Ainahan voi lisätä vaikka poista tuote nappeja. Taustalla pyörii omia ruokakuvia, 20 täysin satunnaisesti</p>
             <div class="ruuat">
-                <h2>Tarjolla olevat ruuat:</h2><br>
-                <div class="ruoka0">
-                <p class="ruuanNimi">Makaroonilaatikko</p>
-                <p class="annosKoko">Annoskoko: 1 litra</p>
-                <p class="annoksia" value="3">Jäljellä: 3 annosta</p>
-                <p class="hinta"> hinta: 3€</p>
+                
             </div>
-                <br>
-            </div>
+               
            <div class="formi">
-               <form action="POST">
+               <form action="">
                    <label for="Nimi">Tilaajan nimi</label><br>
-                   <input type="text" placeholder="Nimesi" required ><br>
+                   <input type="text" placeholder="Nimesi"  ><br>
                    <label for="email">Tilaajan sähköposti</label><br>
-                   <input type="email" placeholder="Sähköpostisi" required><br>
+                   <input type="email" placeholder="Sähköpostisi" ><br>
                    <label for="tilaus">Mitä saisi olla?</label><br>
                    <select name="tilaus" id="tilaus">    
                        <option value="EiMitään">En tilaa mitään</option>
@@ -37,9 +32,13 @@
                    <select name="" id="tilausMäärä">
                    <option value="0">0</option>
                 </select> <br>
-                   <input type="submit" value="Lähetä" id="tilausSubmit">
+                   <input type="submit" value="Lisää listalle" id="tilausSubmit">
                </form>
                <h4>Mitä olet tilaamassa:</h4>
+               <div class="tilatut">
+                   
+               </div>
+               <h5>Yhteensä: <span class="total"></span> €</h5>
            </div>
         </div>
         <h1>Admin alue</h1>
