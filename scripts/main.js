@@ -10,6 +10,7 @@ const tilausSubmit = document.querySelector('#tilausSubmit')
 const tilausMäärä = document.querySelector('#tilausMäärä')
 const tilatut = document.querySelector('.tilatut')
 const total = document.querySelector('.total')
+const MyynnissäOlevat = document.querySelector('.myynissäOlevat')
 
 let summa = 0
 let lista = [
@@ -66,8 +67,8 @@ adminSubmit.addEventListener('click', (event)=> {
     }
     lista.push({nimi: lisää.value, annoskoko: annosKoko.value, jäljellä: määrä.value, hinta: hinta.value }) 
     event.preventDefault()
-    myyntiLista()
-   lisääListalle()
+    päivitä()
+  
   
 } )
 
@@ -119,15 +120,16 @@ tilausSubmit.addEventListener('click', (e)=> {
     uusiDiv.innerHTML = `
     <p>${ruokaValikko.value}</p>
     <p>annoksia: ${tilausMäärä.value}</p>
-    <button onclick="poista()">Poista</button>
+    <button class="remove" onclick="poista(this)">Poista</button>
     `;
     tilatut.appendChild(uusiDiv)
     let löydä = lista.findIndex( ({ nimi }) => nimi === ruokaValikko.value );
     lista[löydä].jäljellä = lista[löydä].jäljellä - tilausMäärä.value
     summa = summa + lista[löydä].hinta.toFixed(2) * tilausMäärä.value
     total.innerText = summa
-    myyntiLista()
+    
     e.preventDefault()
+    päivitä()
     return summa
 })
 
@@ -144,11 +146,34 @@ function alustus() {
         tilausMäärä.appendChild(uusiVaihtoehto)
     }
 }
-function poista(e)
-{
-    console.log(e.parentNode.nodeName)
+function poista(e) {
+    e.parentElement.remove()
 }
 
-lisääListalle()
-myyntiLista()
-alustus()
+//adminin poistolista
+function poistoLista() {
+    MyynnissäOlevat.innerHTML = ""
+    for(let annos of lista) {
+        const uusiDiv = document.createElement('div')
+        uusiDiv.id = `${lisää}`
+        uusiDiv.innerHTML = `
+        <p>${annos.nimi}</p>
+        <p>annoskoko: ${annos.annoskoko}</p>
+        <p >Jäljellä: ${annos.jäljellä} annosta</p>
+        <p>Hinta:€ ${annos.hinta}</p>
+        <button class="poistaTuote" onclick="poistaTuote(this)">Poista tuote</button>
+        <br>
+        <br>
+        `;
+        MyynnissäOlevat.appendChild(uusiDiv)
+        
+    }
+}
+function päivitä() {
+    poistoLista()
+    lisääListalle()
+    myyntiLista()
+    alustus()
+}
+
+päivitä()
