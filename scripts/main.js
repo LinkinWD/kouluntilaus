@@ -169,11 +169,27 @@ function poistoLista() {
         
     }
 }
+
+function poistaTuote(e) {
+    let TuotteenNimi = e.parentElement.childNodes[1].innerHTML
+    let löydä = lista.findIndex( ({ nimi }) => nimi === TuotteenNimi );
+    console.log(löydä)
+    lista.splice(löydä, 1)
+    if(lista.length === 0) {
+        myyntiLista()
+        poistoLista()
+        ruokaValikko.innerHTML = ""
+        tilausMäärä.innerHTML = ""
+        return false
+    }
+    päivitä()
+}
+
 function päivitä() {
-    poistoLista()
-    lisääListalle()
-    myyntiLista()
-    alustus()
+        poistoLista()
+        lisääListalle()
+        myyntiLista()
+        alustus()
 }
 
 päivitä()
