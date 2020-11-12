@@ -19,8 +19,8 @@ let lista = [
     jäljellä: 12,
     hinta: 2},
     {nimi: 'kanelipulla',
-    annoskoko: '1 kpl',
-    jäljellä: 50,
+    annoskoko: 'pussi (5 kpl)',
+    jäljellä: 5,
     hinta: 0.20}
 ]
 
@@ -66,6 +66,10 @@ adminSubmit.addEventListener('click', (event)=> {
         return false
     }
     lista.push({nimi: lisää.value, annoskoko: annosKoko.value, jäljellä: määrä.value, hinta: hinta.value }) 
+    lisää.value = ''
+    määrä.value = ''
+    annosKoko.value = ''
+    hinta.value = ''
     event.preventDefault()
     päivitä()
   
@@ -125,12 +129,15 @@ tilausSubmit.addEventListener('click', (e)=> {
     tilatut.appendChild(uusiDiv)
     let löydä = lista.findIndex( ({ nimi }) => nimi === ruokaValikko.value );
     lista[löydä].jäljellä = lista[löydä].jäljellä - tilausMäärä.value
-    summa = summa + lista[löydä].hinta.toFixed(2) * tilausMäärä.value
-    total.innerText = summa
+    summa = summa + lista[löydä].hinta * tilausMäärä.value
+    total.innerText = summa.toFixed(2)
     
     e.preventDefault()
     päivitä()
     return summa
+    
+    
+    
 })
 
 // vähän toistoo, mutta tuli nopeesti tälläi tehtyä toi numero jutska
@@ -147,7 +154,17 @@ function alustus() {
     }
 }
 function poista(e) {
+    let TuotteenNimi = e.parentElement.childNodes[1].innerHTML
+    let löydä = lista.findIndex( ({ nimi }) => nimi === TuotteenNimi );
+    
+    let tilattujenMäärä = e.parentElement.childNodes[3].innerHTML
+    let res = tilattujenMäärä.replace(/\D/g, "");
+    lista[löydä].jäljellä = lista[löydä].jäljellä + res
+    summa =  summa - lista[löydä].hinta * res
     e.parentElement.remove()
+    total.innerText = summa
+    päivitä()
+    return summa
 }
 
 //adminin poistolista
@@ -170,10 +187,11 @@ function poistoLista() {
     }
 }
 
+// poista tuote adminin listalta
 function poistaTuote(e) {
     let TuotteenNimi = e.parentElement.childNodes[1].innerHTML
     let löydä = lista.findIndex( ({ nimi }) => nimi === TuotteenNimi );
-    console.log(löydä)
+    
     lista.splice(löydä, 1)
     if(lista.length === 0) {
         myyntiLista()
